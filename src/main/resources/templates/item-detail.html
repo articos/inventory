@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+<body>
+<div class="container">
+    <div class="page-header"><h1>Spring on Tomcat</h1></div>
+    <table>
+        <thead>
+        <tr>
+            <th>N&#225zev</th>
+            <th>Datum vytvo&#345en&#237</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${item}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.registerDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
