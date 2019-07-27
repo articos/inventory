@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Inventory</a>
+    <a class="navbar-brand" href="/">Inventory</a>
     <a class="navbar-brand" href="createItemPage">New Item</a>
 </nav>
 <div class="container">
@@ -16,12 +16,15 @@
     <table>
         <thead>
         <tr>
+            <th>Polozka</th>
             <th>N&#225zev</th>
             <th>Datum vytvo&#345en&#237</th>
+            <th>Uprava</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="items : ${items}">
+        <tr th:each="items : ${items}" style="cursor: pointer">
+            <td><img th:src="${'data:image/jpg;base64,'+items.imageToShow}" width="150" height="100" /></td>
             <td th:text="${items.name}"></td>
             <td th:text="${items.registerDate}"></td>
             <td><a th:href="@{/itemDetail/{id}(id=${items.itemId})}">Edit</a></td>

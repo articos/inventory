@@ -7,6 +7,9 @@ import com.inventory.util.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -22,21 +25,19 @@ public class ItemService {
 
     public List<ItemDTO> findAll() {
         List<Item> items = itemRepository.findAll();
-        List<ItemDTO> itemDTOs = mapper.itemsToItemsDTOs(items);
-        return itemDTOs;
+        return mapper.itemsToItemsDTOs(items);
     }
 
     public Item findById(Long id) {
         Optional<Item> itemOptional = itemRepository.findById(id);
-        Item item = itemOptional.get();
-        return item;
+        return itemOptional.get();
     }
 
-    public void createItem(ItemDTO itemDTO) {
+    public void createItem(ItemDTO itemDTO) throws IOException {
         Date date = new Date();
         itemDTO.setRegisterDate(date);
         Item item = mapper.itemDTOToItem(itemDTO);
-//        Item savedItem = itemRepository.save(item);
+        item.setImage(itemDTO.getImage().getBytes());
         itemRepository.save(item);
     }
 }

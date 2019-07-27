@@ -18,6 +18,9 @@ public class Item {
     @Column(name = "REGISTER_DATE")
     private Date registerDate;
 
+    @Lob
+    private byte[] image;
+
     public Long getId() {
         return id;
     }
@@ -40,5 +43,13 @@ public class Item {
 
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

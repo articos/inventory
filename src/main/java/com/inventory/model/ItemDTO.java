@@ -1,5 +1,8 @@
 package com.inventory.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 import java.util.Date;
 
 public class ItemDTO {
@@ -7,6 +10,8 @@ public class ItemDTO {
     private Integer itemId;
     private String name;
     private Date registerDate;
+    private MultipartFile image;
+    private String imageToShow;
 
     public Integer getItemId() {
         return itemId;
@@ -30,5 +35,21 @@ public class ItemDTO {
 
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
+    public String getImageToShow() {
+        return imageToShow;
+    }
+
+    public void setImageToShow(String imageToShow) {
+        this.imageToShow = imageToShow;
     }
 }

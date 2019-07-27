@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
+import java.util.List;
+
 @Controller
 public class ItemController {
 
@@ -30,7 +33,7 @@ public class ItemController {
     }
 
     @PostMapping("/createItem")
-    public String createItem(@ModelAttribute("itemDTO") ItemDTO itemDTO, BindingResult bindingResult, Model model) {
+    public String createItem(@ModelAttribute("itemDTO") ItemDTO itemDTO, BindingResult bindingResult, Model model) throws IOException {
         if (bindingResult.hasErrors()) {
             return "index";
         }
