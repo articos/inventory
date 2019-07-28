@@ -1,11 +1,14 @@
 package com.inventory.util;
 
+import com.inventory.entity.Event;
 import com.inventory.entity.Item;
+import com.inventory.model.EventDTO;
 import com.inventory.model.ItemDTO;
 import org.mapstruct.*;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Base64.getEncoder;
 
@@ -27,4 +30,8 @@ public interface ModelMapper {
 
     @Mapping(target = "image", ignore = true)
     Item itemDTOToItem(ItemDTO itemDTO);
+
+    EventDTO eventToEventDTO(Event event);
+
+    Event eventDTOToEvent(EventDTO eventDTO);
 }

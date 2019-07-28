@@ -28,9 +28,12 @@ public class ItemService {
         return mapper.itemsToItemsDTOs(items);
     }
 
-    public Item findById(Long id) {
+    public ItemDTO findById(Long id) {
         Optional<Item> itemOptional = itemRepository.findById(id);
-        return itemOptional.get();
+        if (itemOptional.isPresent()) {
+            return mapper.itemToItemDTO(itemOptional.get());
+        }
+        return null;
     }
 
     public void createItem(ItemDTO itemDTO) throws IOException {

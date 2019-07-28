@@ -23,6 +23,14 @@
         </tr>
         </tbody>
     </table>
+
+    <table>
+        <tr th:object="${item}">
+        <tr th:each="events : ${item.events}">
+            <td th:text="${events.name}"></td>
+        </tr>
+    </table>
 </div>
+
 </body>
 </html>

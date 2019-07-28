@@ -2,8 +2,9 @@ package com.inventory.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class ItemDTO {
 
@@ -12,6 +13,7 @@ public class ItemDTO {
     private Date registerDate;
     private MultipartFile image;
     private String imageToShow;
+    private List<EventDTO> events;
 
     public Integer getItemId() {
         return itemId;
@@ -51,5 +53,13 @@ public class ItemDTO {
 
     public void setImageToShow(String imageToShow) {
         this.imageToShow = imageToShow;
+    }
+
+    public List<EventDTO> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<EventDTO> events) {
+        this.events = events;
     }
 }

@@ -2,13 +2,14 @@ package com.inventory.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "ITEM")
 public class Item {
 
     @Id
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "ITEM_ID", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -20,6 +21,9 @@ public class Item {
 
     @Lob
     private byte[] image;
+
+    @OneToMany(mappedBy="item")
+    private Set<Event> events;
 
     public Long getId() {
         return id;
@@ -51,5 +55,13 @@ public class Item {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 }
