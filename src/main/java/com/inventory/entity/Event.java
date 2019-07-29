@@ -2,8 +2,11 @@ package com.inventory.entity;
 
 import javax.persistence.*;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "EVENT")
+@Data
 public class Event {
 
     @Id
@@ -18,27 +21,4 @@ public class Event {
     @JoinColumn(name="item_id")
     private Item item;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
 }
