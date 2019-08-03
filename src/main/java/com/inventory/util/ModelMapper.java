@@ -19,17 +19,18 @@ public interface ModelMapper {
     @Mapping(target = "image", ignore = true)
     ItemDTO itemToItemDTO(Item item);
 
+
+    List<ItemDTO> itemsToItemsDTOs(List<Item> items);
+
+    @Mapping(target = "image", ignore = true)
+    Item itemDTOToItem(ItemDTO itemDTO);
+
     @AfterMapping
     public default void setImage(Item item, @MappingTarget ItemDTO itemDTO) {
         if (item.getImage() != null) {
             itemDTO.setImageToShow(Base64.getEncoder().encodeToString(item.getImage()));
         }
     }
-
-    List<ItemDTO> itemsToItemsDTOs(List<Item> items);
-
-    @Mapping(target = "image", ignore = true)
-    Item itemDTOToItem(ItemDTO itemDTO);
 
     EventDTO eventToEventDTO(Event event);
 

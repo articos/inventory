@@ -3,8 +3,9 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+        <link rel="stylesheet"
+              href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
+        <title>Item Detail</title>
     </head>
 <body>
 <div class="container">
@@ -20,6 +21,7 @@
         <tr th:object="${item}">
             <td th:text="${item.name}"></td>
             <td th:text="${item.registerDate}"></td>
+            <a class="navbar-brand" th:href="@{/createEventPage/{id}(id=${item.itemId})}">New Item</a>
         </tr>
         </tbody>
     </table>

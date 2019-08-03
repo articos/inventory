@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Entity
 @Table(name = "EVENT")
-@Data
 public class Event {
 
     @Id
@@ -18,7 +17,30 @@ public class Event {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="item_id")
+    @JoinColumn(name="ITEM_ID")
     private Item item;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }

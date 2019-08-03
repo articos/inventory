@@ -20,6 +20,7 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("items", itemService.findAll());
@@ -41,7 +42,7 @@ public class ItemController {
         return "index";
     }
 
-    @GetMapping("createItemPage")
+    @GetMapping("/createItemPage")
     public String showCreatItemPage(ItemDTO itemDTO) {
         return "create-item";
     }
