@@ -16,6 +16,9 @@ public class Event {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "EVENT_TYPE")
+    private String eventType;
+
     @ManyToOne
     @JoinColumn(name="ITEM_ID")
     private Item item;
@@ -42,5 +45,13 @@ public class Event {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 }

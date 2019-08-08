@@ -13,6 +13,12 @@
     <form th:action="@{/createEvent}" th:object="${eventDTO}" method="post" enctype="multipart/form-data">
         <input id="itemId" th:field="${item.itemId}" type="hidden"/>
         <p>Name of Event: <input type="text" th:field="${eventDTO.name}" /></p>
+        <select th:field="*{eventType}">
+            <option th:each="state : ${T(com.inventory.classifier.EventType).values()}"
+                    th:value="${state}"
+                    th:text="${state}">
+            </option>
+        </select>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </div>

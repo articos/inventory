@@ -3,6 +3,7 @@ package com.inventory.model;
 import java.util.Date;
 import java.util.List;
 
+import com.inventory.classifier.ItemState;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +14,7 @@ public class ItemDTO {
     private Date registerDate;
     private MultipartFile image;
     private String imageToShow;
+    private ItemState state;
     private List<EventDTO> events;
 
     public Long getItemId() {
@@ -61,5 +63,13 @@ public class ItemDTO {
 
     public void setEvents(List<EventDTO> events) {
         this.events = events;
+    }
+
+    public ItemState getState() {
+        return state;
+    }
+
+    public void setState(ItemState state) {
+        this.state = state;
     }
 }

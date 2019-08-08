@@ -1,11 +1,13 @@
 package com.inventory.model;
 
+import com.inventory.classifier.EventType;
 import lombok.Data;
 
 public class EventDTO {
 
     private Long id;
     private String name;
+    private EventType eventType;
     private ItemDTO itemDTO;
 
     public Long getId() {
@@ -30,5 +32,13 @@ public class EventDTO {
 
     public void setItemDTO(ItemDTO itemDTO) {
         this.itemDTO = itemDTO;
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
     }
 }

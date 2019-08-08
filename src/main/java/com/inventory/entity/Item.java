@@ -24,7 +24,10 @@ public class Item {
     @Lob
     private byte[] image;
 
-    @OneToMany(mappedBy="item", cascade = CascadeType.ALL)
+    @Column(name = "STATE")
+    private String state;
+
+    @OneToMany(mappedBy="item", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Event> events;
 
     public Long getId() {
@@ -65,5 +68,13 @@ public class Item {
 
     public void setEvents(Set<Event> events) {
         this.events = events;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

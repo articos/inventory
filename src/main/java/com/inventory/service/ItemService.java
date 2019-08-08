@@ -30,10 +30,7 @@ public class ItemService {
 
     public ItemDTO findById(Long id) {
         Optional<Item> itemOptional = itemRepository.findById(id);
-        if (itemOptional.isPresent()) {
-            return mapper.itemToItemDTO(itemOptional.get());
-        }
-        return null;
+        return itemOptional.map(item -> mapper.itemToItemDTO(item)).orElse(null);
     }
 
     public void createItem(ItemDTO itemDTO) throws IOException {
