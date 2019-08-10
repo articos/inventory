@@ -73,15 +73,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="items : ${items}" style="cursor: pointer">
-            <td><img th:src="${'data:image/jpg;base64,'+items.imageToShow}" width="150" height="100"/></td>
-            <td th:text="${items.name}"></td>
-            <td th:text="${items.registerDate}"></td>
-            <td th:text="${items.state}"></td>
-            <td><a th:href="@{/itemDetail/{id}(id=${items.itemId})}">Edit</a></td>
+        <tr th:each="item : ${items.content}" style="cursor: pointer">
+            <td><img th:src="${'data:image/jpg;base64,'+item.imageToShow}" width="150" height="100"/></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.registerDate}"></td>
+            <td th:text="${item.state}"></td>
+            <td><a th:href="@{/itemDetail/{id}(id=${item.itemId})}">Edit</a></td>
         </tr>
         </tbody>
     </table>
+
+    <div th:if="${items.totalPages > 0}" class="pagination"
+         th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/(size=${items.size}, page=${pageNumber})}"
+           th:text=${pageNumber}
+           th:class="${pageNumber==items.number + 1} ? active"></a>
+    </div>
 
     <div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>
 </div>
