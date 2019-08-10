@@ -25,7 +25,7 @@ public class ItemController {
 
     @GetMapping("/")
     public String index(Model model, @RequestParam("page") Optional<Integer> page,
-                        @RequestParam("size") Optional<Integer> size) {
+                        @RequestParam("size") Optional<Integer> size) throws IOException {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
 

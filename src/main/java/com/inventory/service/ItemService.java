@@ -4,18 +4,19 @@ import com.inventory.entity.Item;
 import com.inventory.model.ItemDTO;
 import com.inventory.repository.ItemRepository;
 import com.inventory.util.ModelMapper;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.*;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
 @Service
 public class ItemService {
 
@@ -43,8 +44,8 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-
-    public Page<ItemDTO> findPaginated(Pageable pageable) {
+    //TODO refactor not found image
+    public Page<ItemDTO> findPaginated(Pageable pageable) throws IOException {
 
         List<ItemDTO> items = mapper.itemsToItemsDTOs(itemRepository.findAll());
         int pageSize = pageable.getPageSize();
@@ -60,6 +61,13 @@ public class ItemService {
         }
 
         Page<ItemDTO> itemPage = new PageImpl<ItemDTO>(list, PageRequest.of(currentPage, pageSize), items.size());
+        byte[] fileContent = FileUtils.readFileToByteArray(new File("src/main/resources/static/images/not-found-image.png"));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        for (ItemDTO item : itemPage) {
+            if (item.getImageToShow() == null || item.getImageToShow().isEmpty()) {
+                item.setImageToShow(encodedString);
+            }
+        }
 
         return itemPage;
 
