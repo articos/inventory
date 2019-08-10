@@ -1,18 +1,68 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <link rel="stylesheet"-->
+<!--          href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />-->
+<!--    <title>Inventory</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
+<!--    <a class="navbar-brand" href="/">Inventory</a>-->
+<!--    <a class="navbar-brand" href="createItemPage">New Item</a>-->
+<!--</nav>-->
+<!--<div class="container">-->
+<!--    <div class="page-header"><h1>Spring on Tomcat</h1></div>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Polozka</th>-->
+<!--            <th>N&#225zev</th>-->
+<!--            <th>Datum vytvo&#345en&#237</th>-->
+<!--            <th>Uprava</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="items : ${items}" style="cursor: pointer">-->
+<!--            <td><img th:src="${'data:image/jpg;base64,'+items.imageToShow}" width="150" height="100" /></td>-->
+<!--            <td th:text="${items.name}"></td>-->
+<!--            <td th:text="${items.registerDate}"></td>-->
+<!--            <td th:text="${items.state}"></td>-->
+<!--            <td><a th:href="@{/itemDetail/{id}(id=${items.itemId})}">Edit</a></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>-->
+<!--<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet"
-          href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
-    <title>Inventory</title>
+          href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Inventory</a>
-    <a class="navbar-brand" href="createItemPage">New Item</a>
-</nav>
+<div th:replace="fragments/header :: header">
+
+    <!--    <div class="navbar navbar-inverse navbar-fixed-top">-->
+    <!--        <div class="container">-->
+    <!--            <div class="navbar-header">-->
+    <!--                <a class="navbar-brand" href="/">Inventory</a>-->
+    <!--            </div>-->
+    <!--            <div class="navbar-collapse collapse">-->
+    <!--                <ul class="nav navbar-nav">-->
+    <!--                    <a class="navbar-brand" href="createItemPage">New Item</a>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+</div>
 <div class="container">
-    <div class="page-header"><h1>Spring on Tomcat</h1></div>
     <table>
         <thead>
         <tr>
@@ -24,7 +74,7 @@
         </thead>
         <tbody>
         <tr th:each="items : ${items}" style="cursor: pointer">
-            <td><img th:src="${'data:image/jpg;base64,'+items.imageToShow}" width="150" height="100" /></td>
+            <td><img th:src="${'data:image/jpg;base64,'+items.imageToShow}" width="150" height="100"/></td>
             <td th:text="${items.name}"></td>
             <td th:text="${items.registerDate}"></td>
             <td th:text="${items.state}"></td>
@@ -32,9 +82,9 @@
         </tr>
         </tbody>
     </table>
+
+    <div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>
 </div>
-<script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
-<script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+...
 </body>
 </html>

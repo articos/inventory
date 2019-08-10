@@ -3,24 +3,25 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet"
-          href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
+          href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
     <title>New Item</title>
 </head>
-<body>
-<div class="container my-5">
-    <h2>Vytoreni nove udalosti pro <span th:text="${item.name}">Sebastian</span>!</h2>
-    <h1>Form</h1>
-    <form th:action="@{/createEvent}" th:object="${eventDTO}" method="post" enctype="multipart/form-data">
-        <input id="itemId" th:field="${item.itemId}" type="hidden"/>
-        <p>Name of Event: <input type="text" th:field="${eventDTO.name}" /></p>
-        <select th:field="*{eventType}">
-            <option th:each="state : ${T(com.inventory.classifier.EventType).values()}"
-                    th:value="${state}"
-                    th:text="${state}">
-            </option>
-        </select>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-</div>
-</body>
+<div th:replace="fragments/header :: header"></div>
+    <body>
+    <div class="container my-5">
+        <h2>Vytoreni nove udalosti pro <span th:text="${item.name}">Sebastian</span>!</h2>
+        <h1>Form</h1>
+        <form th:action="@{/createEvent}" th:object="${eventDTO}" method="post" enctype="multipart/form-data">
+            <input id="itemId" th:field="${item.itemId}" type="hidden"/>
+            <p>Name of Event: <input type="text" th:field="${eventDTO.name}"/></p>
+            <select th:field="*{eventType}">
+                <option th:each="state : ${T(com.inventory.classifier.EventType).values()}"
+                        th:value="${state}"
+                        th:text="${state}">
+                </option>
+            </select>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        </form>
+    </div>
+    </body>
 </html>

@@ -3,18 +3,20 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet"
-          href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
+          href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
     <title>New Item</title>
 </head>
-<body>
-<div class="container my-5">
-    <h3> Add Student</h3>
-    <h1>Form</h1>
-    <form th:action="@{/createItem}" th:object="${itemDTO}" method="post" enctype="multipart/form-data">
-        <p>Name of Item: <input type="text" th:field="*{name}" /></p>
-        <p>Image of Item: <input type="file" name="fileupload" value="fileupload" id="fileupload"th:field="*{image}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-</div>
-</body>
+<div th:replace="fragments/header :: header"></div>
+    <body>
+    <div class="container my-5">
+        <h3> Add Student</h3>
+        <h1>Form</h1>
+        <form th:action="@{/createItem}" th:object="${itemDTO}" method="post" enctype="multipart/form-data">
+            <p>Name of Item: <input type="text" th:field="*{name}"/></p>
+            <p>Image of Item: <input type="file" name="fileupload" value="fileupload" id="fileupload"
+                                     th:field="*{image}"/></p>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        </form>
+    </div>
+    </body>
 </html>

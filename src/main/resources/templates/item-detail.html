@@ -2,37 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <head>
-        <link rel="stylesheet"
-              href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
-        <title>Item Detail</title>
-    </head>
-<body>
-<div class="container">
-    <div class="page-header"><h1>Spring on Tomcat</h1></div>
-    <table>
-        <thead>
-        <tr>
-            <th>N&#225zev</th>
-            <th>Datum vytvo&#345en&#237</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:object="${item}">
-            <td th:text="${item.name}"></td>
-            <td th:text="${item.registerDate}"></td>
-            <a class="navbar-brand" th:href="@{/createEventPage/{id}(id=${item.itemId})}">New Item</a>
-        </tr>
-        </tbody>
-    </table>
+    <link rel="stylesheet"
+          href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
+    <title>Item Detail</title>
+</head>
+<div th:replace="fragments/header :: header"></div>>
+    <body>
+    <div class="container">
+        <div class="page-header"><h1>Spring on Tomcat</h1></div>
+        <table>
+            <thead>
+            <tr>
+                <th>N&#225zev</th>
+                <th>Datum vytvo&#345en&#237</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${item}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.registerDate}"></td>
+                <a class="navbar-brand" th:href="@{/createEventPage/{id}(id=${item.itemId})}">New Item</a>
+            </tr>
+            </tbody>
+        </table>
 
-    <table>
-        <tr th:object="${item}">
-        <tr th:each="events : ${item.events}">
-            <td th:text="${events.name}"></td>
-        </tr>
-    </table>
-</div>
+        <table>
+            <tr th:object="${item}">
+            <tr th:each="events : ${item.events}">
+                <td th:text="${events.name}"></td>
+            </tr>
+        </table>
+    </div>
 
-</body>
+    </body>
 </html>
