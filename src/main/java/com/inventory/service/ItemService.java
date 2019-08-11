@@ -12,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -68,7 +67,6 @@ public class ItemService {
                 item.setImageToShow(encodedString);
             }
         }
-
         return itemPage;
 
     }

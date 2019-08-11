@@ -27,7 +27,7 @@ public class ItemController {
     public String index(Model model, @RequestParam("page") Optional<Integer> page,
                         @RequestParam("size") Optional<Integer> size) throws IOException {
         int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
+        int pageSize = size.orElse(6);
 
         Page<ItemDTO> items = itemService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
         model.addAttribute("items", items);

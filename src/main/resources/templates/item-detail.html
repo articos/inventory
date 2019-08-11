@@ -6,33 +6,36 @@
           href="https://bootswatch.com/4/cerulean/bootstrap.min.css"/>
     <title>Item Detail</title>
 </head>
-<div th:replace="fragments/header :: header"></div>>
-    <body>
-    <div class="container">
-        <div class="page-header"><h1>Spring on Tomcat</h1></div>
-        <table>
-            <thead>
+<div th:replace="fragments/header :: header"></div>
+>
+<body>
+<div class="container">
+    <div class="page-header"><h1>Detail polozky</h1></div>
+    <table>
+        <tbody>
+        <tr th:object="${item}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.registerDate}"></td>
+            <a class="navbar-brand" th:href="@{/createEventPage/{id}(id=${item.itemId})}"><button type="button" class="btn btn-primary">Vytvoreni nove udalosti</button></a>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-hover">
+        <thead>
             <tr>
                 <th>N&#225zev</th>
                 <th>Datum vytvo&#345en&#237</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             <tr th:object="${item}">
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.registerDate}"></td>
-                <a class="navbar-brand" th:href="@{/createEventPage/{id}(id=${item.itemId})}">New Item</a>
+            <tr th:each="event : ${item.events}">
+                <td th:text="${event.name}"></td>
             </tr>
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+</div>
 
-        <table>
-            <tr th:object="${item}">
-            <tr th:each="events : ${item.events}">
-                <td th:text="${events.name}"></td>
-            </tr>
-        </table>
-    </div>
-
-    </body>
+</body>
 </html>

@@ -8,18 +8,19 @@
 <div th:replace="fragments/header :: header">
 </div>
 <div class="container">
-    <table>
+    <table class="table table-hover">
         <thead>
         <tr>
-            <th>Polozka</th>
+            <th></th>
             <th>N&#225zev</th>
             <th>Datum vytvo&#345en&#237</th>
-            <th>Uprava</th>
+            <th>Stav</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="item : ${items.content}" style="cursor: pointer">
-            <td><img th:src="${'data:image/jpg;base64,'+item.imageToShow}" width="150" height="100"/></td>
+            <td><img th:src="${'data:image/jpg;base64,'+item.imageToShow}" width="100" height="100"/></td>
             <td th:text="${item.name}"></td>
             <td th:text="${item.registerDate}"></td>
             <td th:text="${item.state}"></td>
@@ -28,11 +29,14 @@
         </tbody>
     </table>
 
-    <div th:if="${items.totalPages > 0}" class="pagination"
+    <div>
+        <ul style="display:inline-block;" th:if="${items.totalPages > 0}" class="pagination"
          th:each="pageNumber : ${pageNumbers}">
-        <a th:href="@{/(size=${items.size}, page=${pageNumber})}"
-           th:text=${pageNumber}
-           th:class="${pageNumber==items.number + 1} ? active"></a>
+
+            <li th:class="${pageNumber==items.number + 1} ? active">
+                <a class="page-link" th:href="@{/(size=${items.size}, page=${pageNumber})}"><small th:text="${pageNumber}">pageNumber</small></a>
+            </li>
+        </ul>
     </div>
 
     <div th:replace="fragments/footer :: footer">&copy;2019 Footer</div>
