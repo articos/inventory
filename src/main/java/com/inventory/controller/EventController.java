@@ -33,10 +33,10 @@ public class EventController {
     @PostMapping("/createEvent")
     public String createEvent(@ModelAttribute("eventDTO") EventDTO eventDTO, ItemDTO itemDTO, BindingResult bindingResult, Model model) throws IOException {
         if (bindingResult.hasErrors()) {
-            return "index";
+            return "/";
         }
         eventService.createEvent(eventDTO,itemDTO);
-        return "index";
+        return "redirect:itemDetail/" + itemDTO.getItemId();
     }
 
 }
