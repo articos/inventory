@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -36,6 +37,8 @@ public class EventService {
             Item itemForUpdateState = itemOptional.get();
             Event eventToSave = mapper.eventDTOToEvent(eventDTO);
             setItemStateBasedOnEvent(eventDTO, itemForUpdateState);
+            Date now = new Date();
+            eventToSave.setCreationDate(now);
             eventToSave.setItem(itemForUpdateState);
             evenRepository.save(eventToSave);
         }
@@ -47,6 +50,7 @@ public class EventService {
                 item.setState("LENT");
                 break;
             case NORMAL:
+            case RETURN:
                 item.setState("NORMAL");
                 break;
             case SERVICE:

@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "EVENT")
 public class Event {
@@ -18,6 +20,12 @@ public class Event {
 
     @Column(name = "EVENT_TYPE")
     private String eventType;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @Column(name = "CREATION_DATE")
+    private Date creationDate;
 
     @ManyToOne
     @JoinColumn(name="ITEM_ID")
@@ -53,5 +61,21 @@ public class Event {
 
     public void setEventType(String eventType) {
         this.eventType = eventType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }

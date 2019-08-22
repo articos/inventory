@@ -20,6 +20,7 @@
                         th:text="${state}">
                 </option>
             </select>
+            <textarea  rows = "20" cols = "80" th:field = "${eventDTO.description}">Popis predmetu....</textarea>
             <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
         </form>
     </div>
